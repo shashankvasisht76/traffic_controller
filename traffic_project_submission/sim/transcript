@@ -1,0 +1,28 @@
+# Reading C:/Modeltech_5.5a/win32/../tcl/vsim/pref.tcl 
+# do tb_traffic_controller.fdo 
+# Model Technology ModelSim SE vlog 5.5a Compiler 2001.04 Apr  5 2001
+# -- Compiling module traffic_controller
+# Top level modules:
+# 	traffic_controller
+# Model Technology ModelSim SE vlog 5.5a Compiler 2001.04 Apr  5 2001
+# -- Compiling module tb_traffic_controller
+# Top level modules:
+# 	tb_traffic_controller
+# Model Technology ModelSim SE vlog 5.5a Compiler 2001.04 Apr  5 2001
+# -- Compiling module glbl
+# Top level modules:
+# 	glbl
+# vsim -lib work -t 1ps -L xilinxcorelib_ver -L unisims_ver tb_traffic_controller glbl 
+# Loading work.tb_traffic_controller
+# ERROR: Could not open library xilinxcorelib_ver at xilinxcorelib_ver: No such file or directory
+# ERROR: Could not open library unisims_ver at unisims_ver: No such file or directory
+# Loading work.traffic_controller
+# Loading work.glbl
+# .wave
+# .structure
+# .signals
+# Break at traffic_controller_tb.v line 69
+# Simulation Breakpoint: Break at traffic_controller_tb.v line 69
+# MACRO ./tb_traffic_controller.fdo PAUSED at line 14
+destroy .structure
+destroy .signals

@@ -1,0 +1,336 @@
+Release 7.1i - xst H.38
+Copyright (c) 1995-2005 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to __projnav
+CPU : 0.00 / 0.45 s | Elapsed : 0.00 / 0.00 s
+ 
+--> Parameter xsthdpdir set to ./xst
+CPU : 0.00 / 0.45 s | Elapsed : 0.00 / 0.00 s
+ 
+--> Reading design: traffic_controller.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) HDL Analysis
+  4) HDL Synthesis
+  5) Advanced HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Final Report
+     7.1) Device utilization summary
+     7.2) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "traffic_controller.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "traffic_controller"
+Output Format                      : NGC
+Target Device                      : xc3s200-4-pq208
+
+---- Source Options
+Top Module Name                    : traffic_controller
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+FSM Style                          : lut
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+ROM Style                          : Auto
+Mux Extraction                     : YES
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : YES
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+Resource Sharing                   : YES
+Multiplier Style                   : auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 500
+Add Generic Clock Buffer(BUFG)     : 8
+Register Duplication               : YES
+Equivalent register Removal        : YES
+Slice Packing                      : YES
+Pack IO Registers into IOBs        : auto
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : NO
+Global Optimization                : AllClockNets
+RTL Output                         : Yes
+Write Timing Constraints           : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : maintain
+Slice Utilization Ratio            : 100
+Slice Utilization Ratio Delta      : 5
+
+---- Other Options
+lso                                : traffic_controller.lso
+Read Cores                         : YES
+cross_clock_analysis               : NO
+verilog2001                        : YES
+safe_implementation                : No
+Optimize Instantiated Primitives   : NO
+use_clock_enable                   : Yes
+use_sync_set                       : Yes
+use_sync_reset                     : Yes
+enable_auto_floorplanning          : No
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "traffic_controller.v"
+Module <traffic_controller> compiled
+No errors in compilation
+Analysis of file <"traffic_controller.prj"> succeeded.
+ 
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <traffic_controller>.
+	S0 = <u>00
+	S1 = <u>01
+	S2 = <u>10
+	S3 = <u>11
+Module <traffic_controller> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <traffic_controller>.
+    Related source file is "traffic_controller.v".
+INFO:Xst:2117 - HDL ADVISOR - Mux Selector <state> of Case statement line 105 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+   	- add an 'init' attribute on signal <state> (optimization is then done without any risk)
+   	- use the attribute 'signal_encoding user' to avoid onehot optimization
+   	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 12                                             |
+    | Inputs             | 3                                              |
+    | Outputs            | 6                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | reset (positive)                               |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | 00                                             |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 4-bit adder for signal <$n0009> created at line 58.
+    Found 4-bit register for signal <count>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   4 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+Unit <traffic_controller> synthesized.
+
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Advanced RAM inference ...
+Advanced multiplier inference ...
+Advanced Registered AddSub inference ...
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <FSM_0> on signal <state[1:2]> with sequential encoding.
+-------------------
+ State | Encoding
+-------------------
+ 00    | 00
+ 01    | 01
+ 10    | 10
+ 11    | 11
+-------------------
+Dynamic shift register inference ...
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# FSMs                             : 1
+# Adders/Subtractors               : 1
+ 4-bit adder                       : 1
+# Registers                        : 3
+ 1-bit register                    : 2
+ 4-bit register                    : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <traffic_controller> ...
+Loading device for application Rf_Device from file '3s200.nph' in environment C:/Users/SHASHANK/OneDrive/Desktop/_xmsgs.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block traffic_controller, actual ratio is 0.
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : traffic_controller.ngr
+Top Level Output File Name         : traffic_controller
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : NO
+
+Design Statistics
+# IOs                              : 9
+
+Macro Statistics :
+# Registers                        : 1
+#      4-bit register              : 1
+
+Cell Usage :
+# BELS                             : 17
+#      INV                         : 1
+#      LUT2                        : 4
+#      LUT2_L                      : 2
+#      LUT4                        : 1
+#      LUT4_D                      : 1
+#      LUT4_L                      : 8
+# FlipFlops/Latches                : 6
+#      FDC                         : 6
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 8
+#      IBUF                        : 2
+#      OBUF                        : 6
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s200pq208-4 
+
+ Number of Slices:                       8  out of   1920     0%  
+ Number of Slice Flip Flops:             6  out of   3840     0%  
+ Number of 4 input LUTs:                16  out of   3840     0%  
+ Number of bonded IOBs:                  9  out of    141     6%  
+ Number of GCLKs:                        1  out of      8    12%  
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 6     |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 4.194ns (Maximum Frequency: 238.436MHz)
+   Minimum input arrival time before clock: 2.917ns
+   Maximum output required time after clock: 9.189ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 4.194ns (frequency: 238.436MHz)
+  Total number of paths / destination ports: 35 / 6
+-------------------------------------------------------------------------
+Delay:               4.194ns (Levels of Logic = 2)
+  Source:            count_2 (FF)
+  Destination:       count_1 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: count_2 to count_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              6   0.720   1.342  count_2 (count_2)
+     LUT4:I0->O            1   0.551   0.827  _n0008<1>_SW0 (N19)
+     LUT4_L:I3->LO         1   0.551   0.000  _n0008<1> (_n0008<1>)
+     FDC:D                     0.203          count_1
+    ----------------------------------------
+    Total                      4.194ns (2.025ns logic, 2.169ns route)
+                                       (48.3% logic, 51.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 6 / 6
+-------------------------------------------------------------------------
+Offset:              2.917ns (Levels of Logic = 2)
+  Source:            emergency_A (PAD)
+  Destination:       count_0 (FF)
+  Destination Clock: clk rising
+
+  Data Path: emergency_A to count_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             6   0.821   1.342  emergency_A_IBUF (emergency_A_IBUF)
+     LUT4_L:I0->LO         1   0.551   0.000  _n0008<2> (_n0008<2>)
+     FDC:D                     0.203          count_2
+    ----------------------------------------
+    Total                      2.917ns (1.575ns logic, 1.342ns route)
+                                       (54.0% logic, 46.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 10 / 6
+-------------------------------------------------------------------------
+Offset:              9.189ns (Levels of Logic = 2)
+  Source:            state_FFd2 (FF)
+  Destination:       roadB<0> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: state_FFd2 to roadB<0>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q             10   0.720   1.473  state_FFd2 (state_FFd2)
+     LUT2:I0->O            1   0.551   0.801  state_Out21 (roadB_0_OBUF)
+     OBUF:I->O                 5.644          roadB_0_OBUF (roadB<0>)
+    ----------------------------------------
+    Total                      9.189ns (6.915ns logic, 2.274ns route)
+                                       (75.3% logic, 24.7% route)
+
+=========================================================================
+CPU : 2.67 / 3.18 s | Elapsed : 3.00 / 3.00 s
+ 
+--> 
+
+Total memory usage is 169620 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    2 (   0 filtered)
+

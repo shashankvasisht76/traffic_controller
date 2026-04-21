@@ -1,0 +1,31 @@
+Traffic Signal Controller Project Results
+
+1. RTL Design:
+- Traffic Signal Controller implemented in Verilog
+- Two-road intersection using FSM
+- Emergency override feature included
+
+2. Simulation:
+- Verified using ModelSim
+- Signals observed: clk, reset, emergency_A, roadA, roadB
+- Correct traffic sequence achieved
+- Emergency condition verified successfully
+
+3. Synthesis:
+- Completed using Xilinx ISE 7.1i
+- No errors
+
+4. Implementation:
+- Mapping, Placement, Routing completed
+- No errors
+
+5. Timing:
+- Design operates correctly for given clock
+- Stable transitions observed
+
+6. Output:
+- Programming file (.bit) generated successfully
+
+7. Additional:
+- RTL to FPGA implementation flow completed
+- FSM-based traffic control validated
